@@ -2,6 +2,7 @@
 
 from typing import List
 from typing import Dict
+from typing import Tuple
 from typing import Union
 from typing import Optional
 
@@ -38,8 +39,7 @@ class Portfolio():
                     purchase_date = position.get('purchase_date', None),
                     asset_type = position['asset_type']
                 )
-
-                return self.positions
+            return self.positions
         else:
             raise TypeError("Positions must be a list of dictionaries.")
         
@@ -47,9 +47,9 @@ class Portfolio():
     def remove_position(self, symbol: str) -> Tuple[bool, str]:
         if symbol in self.positions:
             del self.positions[symbol]
-            return (True, "{Symbol} was successfully removed.".format(symbol=symbol))
+            return (True, "{symbol} was successfully removed.".format(symbol=symbol))
         else: 
-            return (False, "{Symbol} did not exist in the portfolio.".format(symbol=symbol))
+            return (False, "{symbol} did not exist in the portfolio.".format(symbol=symbol))
 
     def in_portfolio(self, symbol: str) -> bool:
 
