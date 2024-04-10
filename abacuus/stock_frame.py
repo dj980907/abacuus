@@ -1,0 +1,1 @@
+# an object that keeps data organized and making it where it is easy to do operations

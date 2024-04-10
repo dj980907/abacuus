@@ -1,0 +1,1 @@
+# representing trade object where we are going to be able to create new order, modify orders and etc

@@ -1,0 +1,1 @@
+# defining indicator client where we can calculate RSI, Moving Average, exponential moving average and etc
