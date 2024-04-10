@@ -13,7 +13,7 @@ class Trade():
     """
     Object Type:
     ----
-    `pyrobot.Trade`
+    `abacuus.Trade`
 
     Overview:
     ----
