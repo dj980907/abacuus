@@ -24,9 +24,12 @@ ACCOUNT_NUMBER = config.get('main', 'ACCOUNT_NUMBER')
 
 # Initalize the robot.
 trading_robot = Abacuus(
-    client_id=CLIENT_ID,
-    redirect_uri=REDIRECT_URI,
-    credentials_path=CREDENTIALS_PATH,
+    # client_id=CLIENT_ID,
+    # redirect_uri=REDIRECT_URI,
+    # credentials_path=CREDENTIALS_PATH,
+    client_id='XXXXXX111111YYYY22',
+    redirect_uri='https://localhost/',
+    credentials_path='/Users/dongjoolee/Desktop/abacuus/abacuus/td_state.json',
     paper_trading=True
 )
 

@@ -1,4 +1,8 @@
-ended on part 5
+ended on part 11
+
+also, ran into config issue and did made adjustment to client.py line 244.
+idk how to find this file but i commented out line 244 self.oauth()
+file path is: Library > Frameworks > Python.framework > Versions > 3.12 > lib > python 3.12 > site-packages > td > client.py
 
 
 # Python Trading Robot
@@ -122,3 +126,6 @@ If you'd like to watch more of my content, feel free to visit my YouTube channel
 
 <!-- **Hire Me:**
 If you have a project, you think I can help you with feel free to reach out at [coding.sigma@gmail.com](mailto:coding.sigma@gmail.com?subject=[GitHub]%20Project%20Proposal) or fill out the [contract request form](https://forms.office.com/Pages/ResponsePage.aspx?id=ZwOBErInsUGliXx0Yo2VfcCSWZSwW25Es3vPV2veU0pUMUs5MUc2STkzSzVQMFNDVlI5NjJVNjREUi4u) -->
+
+
+
