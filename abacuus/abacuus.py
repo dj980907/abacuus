@@ -109,19 +109,19 @@ class Abacuus():
 
         """
 
-        pre_market_start_time = datetime.utcnow().replace(
+        pre_market_start_time = datetime.now(timezone.utc).replace(
             hour=8,
             minute=00,
             second=00
         ).timestamp()
 
-        market_start_time = datetime.utcnow().replace(
+        market_start_time = datetime.now(timezone.utc).replace(
             hour=13,
             minute=30,
             second=00
         ).timestamp()
 
-        right_now = datetime.utcnow().timestamp()
+        right_now = datetime.now(timezone.utc).timestamp()
 
         if market_start_time >= right_now >= pre_market_start_time:
             return True
@@ -152,19 +152,19 @@ class Abacuus():
 
         """
 
-        post_market_end_time = datetime.utcnow().replace(
+        post_market_end_time = datetime.now(timezone.utc).replace(
             hour=00,
             minute=00,
             second=00
         ).timestamp()
 
-        market_end_time = datetime.utcnow().replace(
+        market_end_time = datetime.now(timezone.utc).replace(
             hour=20,
             minute=00,
             second=00
         ).timestamp()
 
-        right_now = datetime.utcnow().timestamp()
+        right_now = datetime.now(timezone.utc).timestamp()
 
         if post_market_end_time >= right_now >= market_end_time:
             return True
@@ -195,19 +195,19 @@ class Abacuus():
 
         """
 
-        market_start_time = datetime.utcnow().replace(
+        market_start_time = datetime.now(timezone.utc).replace(
             hour=13,
             minute=30,
             second=00
         ).timestamp()
 
-        market_end_time = datetime.utcnow().replace(
+        market_end_time = datetime.now(timezone.utc).replace(
             hour=20,
             minute=00,
             second=00
         ).timestamp()
 
-        right_now = datetime.utcnow().timestamp()
+        right_now = datetime.now(timezone.utc).timestamp()
 
         if market_end_time >= right_now >= market_start_time:
             return True
