@@ -166,7 +166,7 @@ class Trade():
         if self.side == 'long':
             self.side_opposite = 'short'
         if self.side == 'short':
-            self.side_opposite = 'long'
+            self.side_opposite = 'long' 
 
         return self.order
 
