@@ -266,7 +266,7 @@ class Portfolio():
         # Calculate the Daily Returns (Mean)
         self._stock_frame_daily.frame['daily_returns_avg'] = self._stock_frame_daily.symbol_groups['daily_returns_pct'].transform(
             lambda x: x.mean()
-        )
+        )  
 
         # Calculate the Daily Returns (Standard Deviation)
         self._stock_frame_daily.frame['daily_returns_std'] = self._stock_frame_daily.symbol_groups['daily_returns_pct'].transform(

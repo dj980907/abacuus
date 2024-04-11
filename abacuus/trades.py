@@ -678,7 +678,8 @@ class Trade():
             self.order['session'] = session.upper()
         else:
             raise ValueError(
-                'Invalid session, choose either am, pm, normal, or seamless')
+                'Invalid session, choose either am, pm, normal, or seamless'
+                )
 
     @property
     def order_response(self) -> dict:
