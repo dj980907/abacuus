@@ -56,37 +56,41 @@ multi_position = [
 
 # Grab the New positions
 new_positions = trading_robot.portfolio.add_positions(positions=multi_position)
-pprint.pprint(new_positions)
+# pprint.pprint(new_positions)
 
-# # Add a single position
-# trading_robot_portfolio.add_position(
-#     symbol='MSFT',
-#     quantity=10,
-#     purchase_price=10,
-#     asset_type='equity',
-#     purchase_date='2020-04-01'
-# )
+# Add a single position
+trading_robot_portfolio.add_position(
+    symbol='MSFT',
+    quantity=10,
+    purchase_price=10,
+    asset_type='equity',
+    purchase_date='2020-04-01'
+)
 
-# # Add another single position
-# trading_robot_portfolio.add_position(
-#     symbol='AAPL',
-#     quantity=10,
-#     purchase_price=10,
-#     asset_type='equity',
-#     purchase_date='2020-04-01'
-# )
+# Add another single position
+trading_robot_portfolio.add_position(
+    symbol='AAPL',
+    quantity=10,
+    purchase_price=10,
+    asset_type='equity',
+    purchase_date='2020-04-01'
+)
 
-# # If the Market is open, print some quotes.
-# if trading_robot.regular_market_open:
-#     pprint.pprint(trading_robot.grab_current_quotes())
+# If the Market is open, print some quotes.
+if trading_robot.regular_market_open:
+    # pprint.pprint(trading_robot.grab_current_quotes())
+    print('Regular market is open')
 
-# # If the Post Market is Open, do something.
-# elif trading_robot.post_market_open:
-#     pprint.pprint(trading_robot.grab_current_quotes())
 
-# # If the Pre Market is Open, do something.
-# elif trading_robot.pre_market_open:
-#     pprint.pprint(trading_robot.grab_current_quotes())
+# If the Post Market is Open, do something.
+elif trading_robot.post_market_open:
+    # pprint.pprint(trading_robot.grab_current_quotes())
+    print('Post market is open')
+
+# If the Pre Market is Open, do something.
+elif trading_robot.pre_market_open:
+    # pprint.pprint(trading_robot.grab_current_quotes())
+    print('Pre market is open')
 
 # # Print the Positions
 # pprint.pprint(trading_robot_portfolio.positions)

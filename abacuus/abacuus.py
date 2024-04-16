@@ -85,16 +85,159 @@ class Abacuus():
 
         return td_client
 
+    # @property
+    # def pre_market_open(self) -> bool:
+    #     """Checks if pre-market is open.
+
+    #     Uses the datetime module to create US Pre-Market Equity hours in
+    #     UTC time.
+
+    #     Usage:
+    #     ----
+    #         >>> trading_robot = PyRobot(
+    #         client_id=CLIENT_ID,
+    #         redirect_uri=REDIRECT_URI,
+    #         credentials_path=CREDENTIALS_PATH
+    #         )
+    #         >>> pre_market_open_flag = trading_robot.pre_market_open
+    #         >>> pre_market_open_flag
+    #         True
+
+    #     Returns:
+    #     ----
+    #     bool -- True if pre-market is open, False otherwise.
+
+    #     """
+
+    #     pre_market_start_time = datetime.utcnow().replace(
+    #         hour=8,
+    #         minute=00,
+    #         second=00
+    #     ).timestamp()
+
+    #     market_start_time = datetime.utcnow().replace(
+    #         hour=13,
+    #         minute=30,
+    #         second=00
+    #     ).timestamp()
+
+    #     right_now = datetime.utcnow().timestamp()
+
+    #     print('this is market start time: ',market_start_time)
+    #     print('this is right now',right_now)
+    #     print('this is pre market start time: ', pre_market_start_time)
+
+    #     if market_start_time >= right_now >= pre_market_start_time:
+    #         return True
+    #     else:
+    #         print('pre market false')
+    #         return False
+
+    # @property
+    # def post_market_open(self):
+    #     """Checks if post-market is open.
+
+    #     Uses the datetime module to create US Post-Market Equity hours in
+    #     UTC time.
+
+    #     Usage:
+    #     ----
+    #         >>> trading_robot = PyRobot(
+    #         client_id=CLIENT_ID,
+    #         redirect_uri=REDIRECT_URI,
+    #         credentials_path=CREDENTIALS_PATH
+    #         )
+    #         >>> post_market_open_flag = trading_robot.post_market_open
+    #         >>> post_market_open_flag
+    #         True
+
+    #     Returns:
+    #     ----
+    #     bool -- True if post-market is open, False otherwise.
+
+    #     """
+
+    #     post_market_end_time = datetime.utcnow().replace(
+    #         hour=00,
+    #         minute=00,
+    #         second=00
+    #     ).timestamp()
+
+    #     market_end_time = datetime.utcnow().replace(
+    #         hour=20,
+    #         minute=00,
+    #         second=00
+    #     ).timestamp()
+
+    #     right_now = datetime.utcnow().timestamp()
+
+    #     print('this is post market end time: ',post_market_end_time)
+    #     print('this is right now',right_now)
+    #     print('this is market end time: ', market_end_time)
+
+    #     if post_market_end_time >= right_now >= market_end_time:
+    #         return True
+    #     else:
+    #         print('post market false')
+    #         return False
+
+    # @property
+    # def regular_market_open(self):
+    #     """Checks if regular market is open.
+
+    #     Uses the datetime module to create US Regular Market Equity hours in
+    #     UTC time.
+
+    #     Usage:
+    #     ----
+    #         >>> trading_robot = PyRobot(
+    #         client_id=CLIENT_ID,
+    #         redirect_uri=REDIRECT_URI,
+    #         credentials_path=CREDENTIALS_PATH
+    #         )
+    #         >>> market_open_flag = trading_robot.market_open
+    #         >>> market_open_flag
+    #         True
+
+    #     Returns:
+    #     ----
+    #     bool -- True if post-market is open, False otherwise.
+
+    #     """
+
+    #     market_start_time = datetime.utcnow().replace(
+    #         hour=13,
+    #         minute=30,
+    #         second=00
+    #     ).timestamp()
+
+    #     market_end_time = datetime.utcnow().replace(
+    #         hour=20,
+    #         minute=00,
+    #         second=00
+    #     ).timestamp()
+
+    #     right_now = datetime.utcnow().timestamp()
+
+    #     print('this is market end time: ',market_end_time)
+    #     print('this is right now',right_now)
+    #     print('this is market start time: ', market_start_time)
+
+    #     if market_end_time >= right_now >= market_start_time:
+    #         return True
+    #     else:
+    #         print('regular market false')
+    #         return False
     @property
     def pre_market_open(self) -> bool:
         """Checks if pre-market is open.
 
         Uses the datetime module to create US Pre-Market Equity hours in
-        UTC time.
+        EST time.
 
         Usage:
         ----
-            >>> trading_robot = PyRobot(
+            >>> trading_robot = Abacuus(
             client_id=CLIENT_ID,
             redirect_uri=REDIRECT_URI,
             credentials_path=CREDENTIALS_PATH
@@ -108,20 +251,21 @@ class Abacuus():
         bool -- True if pre-market is open, False otherwise.
 
         """
+        eastern_timezone = timezone(timedelta(hours=-5))  # UTC-5 for EST
 
-        pre_market_start_time = datetime.now(timezone.utc).replace(
+        pre_market_start_time = datetime.now(eastern_timezone).replace(
             hour=8,
-            minute=00,
-            second=00
+            minute=0,
+            second=0
         ).timestamp()
 
-        market_start_time = datetime.now(timezone.utc).replace(
+        market_start_time = datetime.now(eastern_timezone).replace(
             hour=13,
             minute=30,
-            second=00
+            second=0
         ).timestamp()
 
-        right_now = datetime.now(timezone.utc).timestamp()
+        right_now = datetime.now(eastern_timezone).timestamp()
 
         if market_start_time >= right_now >= pre_market_start_time:
             return True
@@ -133,11 +277,11 @@ class Abacuus():
         """Checks if post-market is open.
 
         Uses the datetime module to create US Post-Market Equity hours in
-        UTC time.
+        EST time.
 
         Usage:
         ----
-            >>> trading_robot = PyRobot(
+            >>> trading_robot = Abacuus(
             client_id=CLIENT_ID,
             redirect_uri=REDIRECT_URI,
             credentials_path=CREDENTIALS_PATH
@@ -151,20 +295,21 @@ class Abacuus():
         bool -- True if post-market is open, False otherwise.
 
         """
+        eastern_timezone = timezone(timedelta(hours=-5))  # UTC-5 for EST
 
-        post_market_end_time = datetime.now(timezone.utc).replace(
-            hour=00,
-            minute=00,
-            second=00
+        post_market_end_time = datetime.now(eastern_timezone).replace(
+            hour=0,
+            minute=0,
+            second=0
         ).timestamp()
 
-        market_end_time = datetime.now(timezone.utc).replace(
+        market_end_time = datetime.now(eastern_timezone).replace(
             hour=20,
-            minute=00,
-            second=00
+            minute=0,
+            second=0
         ).timestamp()
 
-        right_now = datetime.now(timezone.utc).timestamp()
+        right_now = datetime.now(eastern_timezone).timestamp()
 
         if post_market_end_time >= right_now >= market_end_time:
             return True
@@ -176,11 +321,11 @@ class Abacuus():
         """Checks if regular market is open.
 
         Uses the datetime module to create US Regular Market Equity hours in
-        UTC time.
+        EST time.
 
         Usage:
         ----
-            >>> trading_robot = PyRobot(
+            >>> trading_robot = Abacuus(
             client_id=CLIENT_ID,
             redirect_uri=REDIRECT_URI,
             credentials_path=CREDENTIALS_PATH
@@ -194,25 +339,28 @@ class Abacuus():
         bool -- True if post-market is open, False otherwise.
 
         """
+        eastern_timezone = timezone(timedelta(hours=-5))  # UTC-5 for EST
 
-        market_start_time = datetime.now(timezone.utc).replace(
+        market_start_time = datetime.now(eastern_timezone).replace(
             hour=13,
             minute=30,
-            second=00
+            second=0
         ).timestamp()
 
-        market_end_time = datetime.now(timezone.utc).replace(
+        market_end_time = datetime.now(eastern_timezone).replace(
             hour=20,
-            minute=00,
-            second=00
+            minute=0,
+            second=0
         ).timestamp()
 
-        right_now = datetime.now(timezone.utc).timestamp()
+        right_now = datetime.now(eastern_timezone).timestamp()
+        print(datetime.now(eastern_timezone))
 
         if market_end_time >= right_now >= market_start_time:
             return True
         else:
             return False
+
 
     def create_portfolio(self) -> Portfolio:
         """Create a new portfolio.
